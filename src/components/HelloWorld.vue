@@ -1,24 +1,18 @@
 <template>
   <v-container class="fill-height">
     <v-responsive
-      class="align-centerfill-height mx-auto"
-      max-width="900"
+      class="align-center fill-height mx-auto"
+      max-width="70%"
     >
-      <v-img
-        class="mb-4"
-        height="150"
-        src="@/assets/logo.png"
-      />
 
-      <div class="text-center">
-        <div class="text-body-2 font-weight-light mb-n1">Welcome to</div>
+      <div class="text-center pb-12">
+        <div class="text-body-2 font-weight-light mb-n1">Vue.js & Vuetify</div>
 
-        <h1 class="text-h2 font-weight-bold">Vuetify</h1>
+        <h1 class="text-h4 text-md-h2 font-weight-bold">Organograma</h1>
       </div>
+     <Forms></Forms>
 
-      <div class="py-4" />
-
-      <v-row>
+      <!-- <v-row>
         <v-col cols="12">
           <v-card
             class="py-4"
@@ -147,11 +141,14 @@
             />
           </v-card>
         </v-col>
-      </v-row>
+      </v-row> -->
+      <AppFooter></AppFooter>
     </v-responsive>
   </v-container>
 </template>
 
 <script setup>
+import AppFooter from './AppFooter.vue';
+
   //
 </script>
