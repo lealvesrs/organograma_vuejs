@@ -8,9 +8,8 @@
 // Composables
 import CadColaboradorView from '@/pages/CadColaboradorView.vue'
 import HomeView from '@/pages/HomeView.vue'
-import Index from '@/pages/HomeView.vue'
-import TimesView from '@/pages/TimesView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import TimesView from '@/pages/TimesView.vue'
 
 const routes = [
   { path: '/', component: HomeView },

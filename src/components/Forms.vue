@@ -43,12 +43,19 @@ export default {
 
             if (valid) {
                 this.colaboradores.push({ nome: this.nome, cargo: this.cargo, img: this.img, time: this.select });
+                localStorage.setItem("colaboradores", JSON.stringify(this.colaboradores) );
                 this.$emit('add', true);
-            }else{
+            } else {
                 this.$emit('add', false);
             }
 
         }
-    }
+    },
+    mounted() {
+        if (localStorage.colaboradores) {
+            this.colaboradores = JSON.parse(localStorage.getItem("colaboradores"));
+        }
+        console.log(this.colaboradores)
+    },
 }
 </script>
