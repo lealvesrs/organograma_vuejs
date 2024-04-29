@@ -3,7 +3,7 @@
     <v-main>
       <router-view />
 
-      <AppFooter></AppFooter>
+      <Footer></Footer>
     </v-main>
 
   </v-app>
