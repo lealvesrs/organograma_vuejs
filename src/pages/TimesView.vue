@@ -1,6 +1,7 @@
 <template>
     <v-container class="fill-height">
-        <ContainerTime v-for="time in times" :key="time.nome" :data="time"></ContainerTime>
+        <ContainerTime v-for="(time, index) in times" :key="index" :data="time"></ContainerTime>
+
     </v-container>
 </template>
 
@@ -8,7 +9,11 @@
 export default {
     data(){
         return{
-            times:[]
+            times:[],
+        }
+    },
+    methods:{
+        confirmRemove(){
         }
     },
     mounted() {

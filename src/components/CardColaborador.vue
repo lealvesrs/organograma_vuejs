@@ -1,9 +1,11 @@
 <template>
     <div class="card">
         <div class="cabecalho" :style="backgroundStyles(color)">
+            <v-btn variant="text"><v-icon icon="mdi mdi-delete" @click="remove"></v-icon></v-btn>
             <v-img class="mx-auto rounded-circle imagem" aspect-ratio="1" cover :lazy-src="data.img" :src="data.img">
                 <template v-slot:error>
-                    <v-img class="mx-auto" aspect-ratio="1" cover height="100" max-width="100" src="../assets/placeholder.jpg"></v-img>
+                    <v-img class="mx-auto" aspect-ratio="1" cover height="100" max-width="100"
+                        src="../assets/placeholder.jpg"></v-img>
                 </template>
 
                 <template v-slot:placeholder>
@@ -14,15 +16,17 @@
             </v-img>
         </div>
         <div className='rodape'>
-            <h4>{{ data.nome }}</h4>
-            <h5>{{ data.cargo }}</h5>
+            <h4>{{ capitalize(data.nome) }}</h4>
+            <h5>{{ capitalize(data.cargo) }}</h5>
         </div>
     </div>
 </template>
 
 <script>
+
 export default {
     props: {
+        index: Number,
         data: Object,
         color: String
     },
@@ -31,6 +35,18 @@ export default {
             return {
                 'background-color': `${color}`
             }
+        },
+        remove(){
+            this.$emit("remove",this.index)
+        },
+        capitalize(word) {
+            let firstLetter = word.charAt(0).toUpperCase()
+
+            let remainingLetters = word.slice(1).toLowerCase()
+
+            let capitalizedWord = firstLetter + remainingLetters
+
+            return capitalizedWord;
         }
     }
 }
@@ -42,6 +58,7 @@ export default {
 
     .cabecalho {
         border-radius: 10px 10px 0px 0px;
+        text-align: end;
     }
 
 
