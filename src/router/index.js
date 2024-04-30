@@ -10,10 +10,12 @@ import CadColaboradorView from '@/pages/CadColaboradorView.vue'
 import HomeView from '@/pages/HomeView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import TimesView from '@/pages/TimesView.vue'
+import CadTimeView from '@/pages/CadTimeView.vue'
 
 const routes = [
   { path: '/', component: HomeView },
   { path: '/cadColaborador', component: CadColaboradorView },
+  { path: '/cadTimes', component: CadTimeView },
   { path: '/times', component: TimesView },
 ]
 

@@ -1,20 +1,13 @@
 <template>
     <v-container class="fill-height">
-        <CardColaborador v-for="c in colaboradores" :key="c.nome"/>
-
+        <ContainerTime></ContainerTime>
     </v-container>
 </template>
-<script>
-export default {
-    data: () => ({
-        colaboradores: [],
-    }),
-    mounted() {
-        if (localStorage.colaboradores) {
-            this.colaboradores = JSON.parse(localStorage.getItem("colaboradores"));
-        }
-        console.log(this.colaboradores)
-    },
 
+
+<style scoped>
+.v-container {
+    margin: 0;
+    max-width: 100%;
 }
-</script>
+</style>

@@ -58,7 +58,7 @@
         </v-col>
 
         <v-col cols="6">
-          <router-link to="/cadColaborador"><v-card
+          <router-link to="/cadTimes"><v-card
             class="py-4"
             color="indigo-darken-2"
             prepend-icon="mdi mdi-view-grid-plus"

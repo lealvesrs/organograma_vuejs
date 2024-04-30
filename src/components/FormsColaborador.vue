@@ -1,4 +1,6 @@
 <template>
+    <Alert :overlay="overlay" :title="message.title" :type="message.type"></Alert>
+
     <v-form @submit.prevent ref="form">
         <v-text-field v-model="nome" :rules="rules" label="Nome"></v-text-field>
 
@@ -27,6 +29,8 @@ export default {
             'Item 3',
             'Item 4',
         ],
+        overlay: false,
+        message: [],
         select: '',
         colaboradores: [],
         rules: [
@@ -43,13 +47,27 @@ export default {
 
             if (valid) {
                 this.colaboradores.push({ nome: this.nome, cargo: this.cargo, img: this.img, time: this.select });
-                localStorage.setItem("colaboradores", JSON.stringify(this.colaboradores) );
-                this.$emit('add', true);
-            } else {
-                this.$emit('add', false);
-            }
+                localStorage.setItem("colaboradores", JSON.stringify(this.colaboradores));
+                this.showMessage(true)
 
-        }
+            } else {
+                this.showMessage(false)
+            }
+        },
+
+        showMessage(status) {
+            this.message = status ? { type: "success", title: "Cadastrado com sucesso" }
+                : { type: "error", title: "Erro ao cadastrar" };
+
+            this.overlay = !this.overlay
+        },
+    },
+    watch: {
+        overlay(val) {
+            val && setTimeout(() => {
+                this.overlay = false
+            }, 1000)
+        },
     },
     mounted() {
         if (localStorage.colaboradores) {
