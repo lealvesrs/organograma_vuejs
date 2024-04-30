@@ -54,11 +54,16 @@ export default {
 
             this.overlay = !this.overlay
         },
+        reset(){
+            this.$refs.form.reset()
+            this.$refs.form.resetValidation()
+        }
     },
     watch: {
         overlay(val) {
             val && setTimeout(() => {
                 this.overlay = false
+                this.reset()
             }, 1000)
         },
     },

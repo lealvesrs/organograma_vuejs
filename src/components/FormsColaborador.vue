@@ -1,7 +1,7 @@
 <template>
     <Alert :overlay="overlay" :title="message.title" :type="message.type"></Alert>
 
-    <v-form @submit.prevent ref="form">
+    <v-form @submit.prevent ref="form" >
         <v-text-field v-model="nome" :rules="rules" label="Nome"></v-text-field>
 
         <v-text-field v-model="cargo" :rules="rules" label="Cargo"></v-text-field>
@@ -45,6 +45,7 @@ export default {
                 this.colaboradores.push({ nome: this.nome, cargo: this.cargo, img: this.img, time: this.select });
                 localStorage.setItem("colaboradores", JSON.stringify(this.colaboradores));
                 this.showMessage(true)
+               
 
             } else {
                 this.showMessage(false)
@@ -57,12 +58,19 @@ export default {
 
             this.overlay = !this.overlay
         },
+
+         reset(){
+            this.$refs.form.reset()
+            this.$refs.form.resetValidation()
+        }
     },
     watch: {
         overlay(val) {
             val && setTimeout(() => {
                 this.overlay = false
+                this.reset()
             }, 1000)
+            
         },
     },
     mounted() {
