@@ -8,7 +8,7 @@
 
         <v-text-field v-model="img" :rules="rules" label="Foto"></v-text-field>
 
-        <v-select v-model="select" :items="times" :rules="[v => !!v || 'Selecione um time']" label="Time"
+        <v-select v-model="select" :items="nomeTimes" :rules="[v => !!v || 'Selecione um time']" label="Time"
             required></v-select>
 
         <v-btn type="submit" class="mt-2" size="large" color="indigo-darken-3" block
@@ -23,12 +23,8 @@ export default {
         nome: '',
         cargo: '',
         img: '',
-        times: [
-            'Item 1',
-            'Item 2',
-            'Item 3',
-            'Item 4',
-        ],
+        times: [],
+        nomeTimes: [],
         overlay: false,
         message: [],
         select: '',
@@ -70,10 +66,19 @@ export default {
         },
     },
     mounted() {
+        if (localStorage.times) {
+            this.times = JSON.parse(localStorage.getItem("times"));
+
+            this.times.forEach(t => {
+                this.nomeTimes.push(t.nome)
+            });
+
+            this.nomeTimes.sort()
+        }
+
         if (localStorage.colaboradores) {
             this.colaboradores = JSON.parse(localStorage.getItem("colaboradores"));
         }
-        console.log(this.colaboradores)
     },
 }
 </script>

@@ -1,9 +1,15 @@
 <template>
     <div class="card">
         <div class="cabecalho" :style="backgroundStyles(color)">
-            <v-img class="mx-auto rounded-circle imagem" height="100" width="100" src="https://bad.src/not/valid">
+            <v-img class="mx-auto rounded-circle imagem" aspect-ratio="1" cover :lazy-src="data.img" :src="data.img">
                 <template v-slot:error>
-                    <v-img class="mx-auto" height="100" max-width="100" src="../assets/placeholder.jpg"></v-img>
+                    <v-img class="mx-auto" aspect-ratio="1" cover height="100" max-width="100" src="../assets/placeholder.jpg"></v-img>
+                </template>
+
+                <template v-slot:placeholder>
+                    <div class="d-flex align-center justify-center fill-height">
+                        <v-progress-circular color="grey-lighten-4" indeterminate></v-progress-circular>
+                    </div>
                 </template>
             </v-img>
         </div>
@@ -21,7 +27,7 @@ export default {
         color: String
     },
     methods: {
-         backgroundStyles(color){
+        backgroundStyles(color) {
             return {
                 'background-color': `${color}`
             }
