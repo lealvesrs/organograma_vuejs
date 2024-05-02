@@ -1,19 +1,22 @@
 <template>
-     <BackButton></BackButton>
+    <back-button></back-button>
     <v-container class="fill-height">
         <v-responsive class="align-center fill-height mx-auto" max-width="70%">
 
-          <TitlePage title="Cadastrar time" icon="mdi mdi-view-grid-plus"></TitlePage>
+            <title-page title="Cadastrar time" icon="mdi mdi-view-grid-plus"></title-page >
 
-            <FormsTime></FormsTime>
-            <BtnVerTimes></BtnVerTimes>
+            <form-team></form-team>
+            <btn-show-team></btn-show-team>
         </v-responsive>
     </v-container>
 
 </template>
 
 <script>
+import FormTeam from '@/components/forms/FormTeam.vue';
+import TitlePage from '@/components/TitlePage.vue';
 export default {
+    components: { FormTeam, TitlePage },
     data: () => ({
         overlay: false,
         message: [],

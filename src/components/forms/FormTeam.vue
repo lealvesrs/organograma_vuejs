@@ -71,7 +71,6 @@ export default {
         if (localStorage.times) {
             this.times = JSON.parse(localStorage.getItem("times"));
         }
-        console.log(this.times)
     },
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
-    <BackButton></BackButton>
+    <back-button></back-button>
     <v-container class="fill-height" v-if="times.length > 0">
-        <ContainerTime v-for="(time, index) in times" :key="index" :data="time"></ContainerTime>
+        <team-container v-for="(time, index) in times" :key="index" :data="time"></team-container>
     </v-container>
 
     <v-container v-else class="fill-height justify-center">
@@ -15,9 +15,10 @@
 </template>
 
 <script>
-import BtnCadastrar from '@/components/BtnGoTo.vue';
+import BtnCadastrar from '@/components/buttons/BtnGoTo.vue';
+import TeamContainer from '@/components/TeamContainer.vue';
 export default {
-    components: { BtnCadastrar },
+    components: { BtnCadastrar, TeamContainer },
     data() {
         return {
             times: [],

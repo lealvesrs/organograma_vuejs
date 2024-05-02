@@ -5,7 +5,7 @@
             <h2 class="text-h5 font-weight-bold text-center">{{ data.nome }}</h2>
         </div>
         <div class="time" v-if="colaboradores.length > 0">
-            <CardColaborador :color="data.corPrimaria" v-for="(c, index) in colaboradores" :key="index" :index="index"
+            <card-employee :color="data.corPrimaria" v-for="(c, index) in colaboradores" :key="index" :index="index"
                 :data="c" @remove="removeItem" />
         </div>
         <div v-else><empty-message title="Nenhum colaborador adicionado ao time"></empty-message>
@@ -17,9 +17,10 @@
 </template>
 
 <script>
+import CardEmployee from './cards/CardEmployee.vue';
 import EmptyMessage from './EmptyMessage.vue';
 export default {
-    components: { EmptyMessage },
+    components: { EmptyMessage, CardEmployee },
     data: () => ({
         colaboradores: [],
         colaboradoresGeral: [],
