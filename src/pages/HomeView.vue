@@ -2,7 +2,7 @@
   <v-container class="fill-height">
     <v-responsive class="align-center fill-height mx-auto" max-width="70%">
 
-      <div class="text-center pb-12">
+      <div class="text-center pb-5 mt-5">
         <div class="text-body-2 font-weight-light mb-n1">Vue.js & Vuetify</div>
 
         <h1 class="text-h4 text-md-h2 font-weight-bold">Organograma</h1>

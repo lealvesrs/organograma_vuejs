@@ -1,5 +1,5 @@
 <template>
-    <div class="text-center pb-12">
+    <div class="text-center pb-12 mt-5">
                 <div class="text-body-2 font-weight-light mb-n1">
                     <v-icon :icon="icon" size="35"></v-icon>
                 </div>

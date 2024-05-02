@@ -1,5 +1,5 @@
 <template>
-    <back-button></back-button>
+    <back-button class="position-absolute"></back-button>
     <v-container class="fill-height">
         <v-responsive class="align-center fill-height mx-auto" max-width="70%">
 
