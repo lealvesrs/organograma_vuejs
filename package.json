@@ -1,10 +1,13 @@
 {
   "name": "app",
   "version": "0.0.0",
+  "homepage": "https://lealvesrs.github.io/organograma_vuejs/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d dist",
     "lint": "eslint . --fix --ignore-path .gitignore"
   },
   "dependencies": {
@@ -23,6 +26,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-vue": "^9.22.0",
+    "gh-pages": "^6.1.1",
     "sass": "^1.71.1",
     "unplugin-fonts": "^1.1.1",
     "unplugin-vue-components": "^0.26.0",

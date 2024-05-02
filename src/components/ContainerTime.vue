@@ -1,17 +1,15 @@
 <template>
+   
     <v-container class="align-center container" :style="backgroundColor(data.corSecundaria)">
         <div class="title" :style="borderColor(data.corPrimaria)">
             <h2 class="text-h5 font-weight-bold text-center">{{ data.nome }}</h2>
         </div>
         <div class="time" v-if="colaboradores.length > 0">
             <CardColaborador :color="data.corPrimaria" v-for="(c, index) in colaboradores" :key="index" :index="index"
-                :data="c" @remove="removeItem"/>
+                :data="c" @remove="removeItem" />
         </div>
-        <div v-else class="empty">
-            <div class="text-body-2 font-weight-light mb-n1">
-                <v-icon icon="mdi mdi-emoticon-sad-outline" size="35"></v-icon>
-            </div>
-            <h3>Nenhum colaborador adicionado ao time</h3>
+        <div v-else><empty-message title="Nenhum colaborador adicionado ao time"></empty-message>
+            <btn-go-to title="Adicionar novo colaborador" path="/cadColaborador"></btn-go-to>
         </div>
     </v-container>
 
@@ -19,7 +17,9 @@
 </template>
 
 <script>
+import EmptyMessage from './EmptyMessage.vue';
 export default {
+    components: { EmptyMessage },
     data: () => ({
         colaboradores: [],
         colaboradoresGeral: [],
@@ -31,11 +31,11 @@ export default {
     methods: {
         removeItem(index) {
             let item = this.colaboradores[index]
-               this.colaboradores.splice(index, 1);
-            
-               let indexGeral = this.colaboradoresGeral.findIndex((e) => e == item)
-               this.colaboradoresGeral.splice(indexGeral, 1);
-               localStorage.setItem('colaboradores', JSON.stringify(this.colaboradoresGeral)); 
+            this.colaboradores.splice(index, 1);
+
+            let indexGeral = this.colaboradoresGeral.findIndex((e) => e == item)
+            this.colaboradoresGeral.splice(indexGeral, 1);
+            localStorage.setItem('colaboradores', JSON.stringify(this.colaboradoresGeral));
 
         },
         backgroundColor(color) {
@@ -90,10 +90,5 @@ export default {
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-}
-
-.empty {
-    color: black;
-    text-align: center;
 }
 </style>

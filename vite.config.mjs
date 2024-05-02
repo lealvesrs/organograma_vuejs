@@ -11,7 +11,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base:"/organograma_vuejs",
+  base:"/organograma_vuejs/",
   plugins: [
     VueRouter(),
     Vue({

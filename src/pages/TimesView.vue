@@ -1,19 +1,30 @@
 <template>
-    <v-container class="fill-height">
+    <BackButton></BackButton>
+    <v-container class="fill-height" v-if="times.length > 0">
         <ContainerTime v-for="(time, index) in times" :key="index" :data="time"></ContainerTime>
-
     </v-container>
+
+    <v-container v-else class="fill-height justify-center">
+        <div>
+            <empty-message class="text-white" title="Nenhum time foi adicionado"></empty-message>
+            <btn-go-to title="Adicionar novo time" path="/cadTimes"></btn-go-to>
+        </div>
+    </v-container>
+
+
 </template>
 
 <script>
+import BtnCadastrar from '@/components/BtnGoTo.vue';
 export default {
-    data(){
-        return{
-            times:[],
+    components: { BtnCadastrar },
+    data() {
+        return {
+            times: [],
         }
     },
-    methods:{
-        confirmRemove(){
+    methods: {
+        confirmRemove() {
         }
     },
     mounted() {
