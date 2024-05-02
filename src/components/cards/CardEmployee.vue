@@ -5,7 +5,7 @@
             <v-img class="mx-auto rounded-circle imagem" aspect-ratio="1" cover :lazy-src="data.img" :src="data.img">
                 <template v-slot:error>
                     <v-img class="mx-auto" aspect-ratio="1" cover height="100" max-width="100"
-                        src="../assets/placeholder.jpg"></v-img>
+                        src="../../assets/placeholder.jpg"></v-img>
                 </template>
 
                 <template v-slot:placeholder>
