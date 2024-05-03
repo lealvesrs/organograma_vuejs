@@ -18,17 +18,17 @@ const items = [
   {
     title: 'Email',
     icon: `mdi-email`,
-    href: 'https://vuetifyjs.com/',
+    href: 'mailto:leticiadeoliveira.corp@gmail.com?subject=Gostei do seu organograma, Letícia!',
   },
   {
     title: 'LinkedIn',
     icon: 'mdi-linkedin',
-    href: 'https://support.vuetifyjs.com/',
+    href: 'https://www.linkedin.com/in/leticia-deoliveira-corp',
   },
   {
     title: 'GitHub',
     icon: `mdi-github`,
-    href: 'https://github.com/vuetifyjs/vuetify',
+    href: 'https://github.com/lealvesrs',
   }
 ]
 </script>
