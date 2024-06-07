@@ -15,24 +15,23 @@
 </template>
 
 <script>
-import BtnCadastrar from '@/components/buttons/BtnGoTo.vue';
-import TeamContainer from '@/components/TeamContainer.vue';
+
+import { onMounted, ref } from 'vue';
 export default {
-    components: { BtnCadastrar, TeamContainer },
-    data() {
+    setup() {
+        let times = ref([])
+
+        onMounted(() => {
+            if (localStorage.times) {
+                times.value = JSON.parse(localStorage.getItem("times"));
+            }
+        })
         return {
-            times: [],
+            times
         }
     },
-    methods: {
-        confirmRemove() {
-        }
-    },
-    mounted() {
-        if (localStorage.times) {
-            this.times = JSON.parse(localStorage.getItem("times"));
-        }
-    }
+
+
 }
 </script>
 

@@ -30,23 +30,23 @@ export default {
         data: Object,
         color: String
     },
-    methods: {
-        backgroundStyles(color) {
+    setup(props, {emit}) {
+        function backgroundStyles(color) {
             return {
                 'background-color': `${color}`
             }
-        },
-        remove(){
-            this.$emit("remove",this.index)
-        },
-        capitalize(word) {
-            let firstLetter = word.charAt(0).toUpperCase()
+        }
+        function remove() {
+            emit("remove", props.index)
+        }
+        function capitalize(word) {
+            return word.charAt(0).toUpperCase() + word.slice(1)
+        }
 
-            let remainingLetters = word.slice(1).toLowerCase()
-
-            let capitalizedWord = firstLetter + remainingLetters
-
-            return capitalizedWord;
+        return{
+            backgroundStyles,
+            remove,
+            capitalize
         }
     }
 }

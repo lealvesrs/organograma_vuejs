@@ -8,19 +8,24 @@
 
 </template>
 <script>
+import { ref, watch} from 'vue';
 export default {
-    data: () => ({
-        insideOverlay: false,
-    }),
     props: {
         overlay: Boolean,
         type: String,
         title: String
     },
-    watch: {
-        overlay() {
-            this.insideOverlay = this.overlay
-        },
-    },
+    setup(props) {
+        let insideOverlay = ref(props.overlay);
+
+        watch(() => props.overlay, (newValue) => {
+            insideOverlay.value = newValue;
+        });
+
+
+        return {
+            insideOverlay
+        };
+    }
 }
 </script>

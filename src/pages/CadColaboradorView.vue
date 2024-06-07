@@ -11,12 +11,3 @@
 
 </template>
 
-
-<script>
-import BackButton from '@/components/buttons/BackButton.vue';
-import TitlePage from '@/components/TitlePage.vue';
-
-export default {
-    components: { BackButton, TitlePage },
-}
-</script>

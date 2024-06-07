@@ -1,5 +1,5 @@
 <template>
-   
+
     <v-container class="align-center container" :style="backgroundColor(data.corSecundaria)">
         <div class="title" :style="borderColor(data.corPrimaria)">
             <h2 class="text-h5 font-weight-bold text-center">{{ data.nome }}</h2>
@@ -17,53 +17,61 @@
 </template>
 
 <script>
-import CardEmployee from './cards/CardEmployee.vue';
-import EmptyMessage from './EmptyMessage.vue';
+import { ref, onBeforeMount, computed } from 'vue';
 export default {
-    components: { EmptyMessage, CardEmployee },
-    data: () => ({
-        colaboradores: [],
-        colaboradoresGeral: [],
-
-    }),
     props: {
         data: Object,
     },
-    methods: {
-        removeItem(index) {
-            let item = this.colaboradores[index]
-            this.colaboradores.splice(index, 1);
 
-            let indexGeral = this.colaboradoresGeral.findIndex((e) => e == item)
-            this.colaboradoresGeral.splice(indexGeral, 1);
-            localStorage.setItem('colaboradores', JSON.stringify(this.colaboradoresGeral));
+    setup(props) {
+        let colaboradores = ref([]);
+        let colaboradoresGeral = ref([]);
 
-        },
-        backgroundColor(color) {
+        onBeforeMount(() => {
+            colaboradoresGeral = itemsFromLocalStorage;
+            colaboradoresGeral.value.forEach(c => {
+                if (c.time == props.data.nome) {
+                    colaboradores.value.push(c)
+                }
+            });
+
+        });
+
+        function removeItem(index) {
+            let item = colaboradores.value[index]
+            colaboradores.value.splice(index, 1);
+
+            let indexGeral = colaboradoresGeral.value.findIndex((e) => e == item)
+            colaboradoresGeral.value.splice(indexGeral, 1);
+            localStorage.setItem('colaboradores', JSON.stringify(colaboradoresGeral.value));
+
+        };
+        function backgroundColor(color) {
             return {
                 'background-color': `${color}`
             }
-        },
-        borderColor(color) {
+        };
+        function borderColor(color) {
             return {
                 'border-bottom': `3px solid ${color}`
             }
         }
-    },
-    computed: {
-        itemsFromLocalStorage() {
-            return JSON.parse(localStorage.getItem('colaboradores') || '[]');
-        },
-    },
-    created() {
-        this.colaboradoresGeral = this.itemsFromLocalStorage;
-        this.colaboradoresGeral.forEach(c => {
-            if (c.time == this.data.nome) {
-                this.colaboradores.push(c)
-            }
-        });
 
-    },
+        const itemsFromLocalStorage = computed(() => {
+            return JSON.parse(localStorage.getItem('colaboradores') || '[]');
+        })
+
+        return {
+            borderColor,
+            backgroundColor,
+            removeItem,
+            colaboradores
+
+        }
+    }
+
+
+
 
 }
 </script>

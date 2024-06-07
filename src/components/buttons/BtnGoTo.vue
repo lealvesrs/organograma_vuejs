@@ -7,16 +7,24 @@
 </template>
 
 <script>
+import { useRouter } from 'vue-router'
 export default {
     props: {
         title: String,
         path: String
     },
-    methods: {
-        goTo() {
-            this.$router.push({ path: this.path })
+
+    setup(props) {
+        const router = useRouter()
+        function goTo() {
+            router.push({ path: props.path })
         }
-    },
+
+        return{
+            goTo
+        }
+    }
+
 
 }
 </script>

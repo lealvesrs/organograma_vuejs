@@ -35,18 +35,21 @@
 
 
 <script>
+import { useDisplay } from 'vuetify';
+
 export default {
-  methods: {
-    cols() {
-      if (this.$vuetify.display.mobile) {
-        return '12'
-      } else {
-        return '6'
-      }
+  setup() {
+    const { mobile } = useDisplay()
+
+    function cols(){
+      return mobile.value ? '12' : '6'
     }
-  }
+
+    return{cols }
+  },
 }
 </script>
+
 
 <style scoped>
 a {

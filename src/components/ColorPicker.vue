@@ -5,35 +5,31 @@
     </div>
 </template>
 <script>
+import { useDisplay } from 'vuetify';
+import { ref, watch } from 'vue';
 export default {
-    data(){
-        return{
-            modelValue: ""
-        }
-        
-    },
-    props:{
+    props: {
         model: String,
     },
-    methods:
-    {
-        checkWidth() {
-            if (this.$vuetify.display.mobile) {
-                return 'width: 100%'
-            } else {
-                return 'width:50%'
-            }
+    setup(props, { emit }) {
+        const { mobile } = useDisplay()
+        let modelValue = ref(props.model)
+
+        function checkWidth() {
+            return mobile.value ? 'width: 100%' : 'width:50%'
         }
+
+        watch(modelValue, (val)=>{
+            emit("color",val)
+        })
+
+        return {
+            modelValue,
+            checkWidth
+        }
+
     },
-    mounted() {
-       this.modelValue = this.model
-    },
-    watch: {
-        modelValue(val) {
-            this.$emit("color",val)
-        },
-    },
-    
+
 }
 </script>
 
